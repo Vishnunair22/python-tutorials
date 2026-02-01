@@ -12,13 +12,15 @@
 2. [Data Types](#2-data-types)
 3. [Variables](#3-variables)
 4. [Keywords and Identifiers](#4-keywords-and-identifiers)
-5. [User Input](#5-user-input)
-6. [Type Conversion](#6-type-conversion)
-7. [Literals](#7-literals)
-8. [Operators](#8-operators)
-9. [Conditional Statements](#9-conditional-statements)
-10. [Exercises](#10-exercises)
-11. [Projects](#11-projects)
+5. [Indentation](#5-indentation)
+6. [User Input](#6-user-input)
+7. [Type Conversion](#7-type-conversion)
+8. [Literals](#8-literals)
+9. [Operators](#9-operators)
+10. [Conditional Statements](#10-conditional-statements)
+11. [Loops](#11-loops)
+12. [Exercises](#12-exercises)
+13. [Projects](#13-projects)
 
 ---
 
@@ -279,7 +281,40 @@ Names given to variables, functions, classes.
 
 ---
 
-## 5. User Input
+## 5. Indentation
+
+![Indentation](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_indentation_graphic_1769917624660.png)
+
+### Overview
+
+Indentation refers to the spaces at the beginning of a code line. In other programming languages (like C, Java), indentation is for readability only, but in Python, it is **mandatory** to define blocks of code.
+
+**Syntax:**
+```python
+if True:
+    print("This is indented")
+    print("Part of the block")
+print("Outside the block")
+```
+
+### Rules
+
+1.  Use **4 spaces** per indentation level (preferred).
+2.  Do not mix tabs and spaces.
+3.  All lines in the same block must have the same indentation.
+
+### Common Errors
+
+**IndentationError:**
+```python
+if True:
+print("Error: Expected an indented block")
+```
+
+---
+
+## 6. User Input
+
 
 ![User Input](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_user_input_graphic_1769916848424.png)
 
@@ -310,7 +345,7 @@ print(sum)  # 30
 
 ---
 
-## 6. Type Conversion
+## 7. Type Conversion
 
 ![Type Conversion](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_type_conversion_graphic_1769916871842.png)
 
@@ -357,7 +392,7 @@ bool("")       # False
 
 ---
 
-## 7. Literals
+## 8. Literals
 
 ![Literals](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_literals_graphic_1769916888299.png)
 
@@ -419,7 +454,7 @@ result = None  # Absence of value
 
 ---
 
-## 9. Conditional Statements
+## 10. Conditional Statements
 
 ![Conditionals](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_conditionals_graphic_1769916907767.png)
 
@@ -482,7 +517,120 @@ status = "Adult" if age >= 18 else "Minor"
 
 ---
 
-## 10. Exercises
+## 11. Loops
+
+![Loops](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_loops_graphic_1769917882692.png)
+
+### Overview
+Loops allow code to be executed repeatedly based on a condition.
+
+### while Loop
+Executes a block of code as long as a condition is true.
+
+```python
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+```
+
+### for Loop
+Iterates over a sequence (like a list, tuple, or string).
+
+**Basic List Iteration:**
+```python
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+```
+
+**Iterating a String:**
+```python
+for char in "Python":
+    print(char)
+# Prints P, y, t, h, o, n on new lines
+```
+
+**Iterating a Dictionary:**
+```python
+person = {'name': 'Vishnu', 'age': 25}
+
+# Iterate keys (default)
+for key in person:
+    print(key) 
+
+# Iterate values
+for value in person.values():
+    print(value)
+
+# Iterate key-value pairs
+for key, value in person.items():
+    print(f"{key}: {value}")
+```
+
+**Nested Loops:**
+```python
+adj = ["red", "tasty"]
+fruits = ["apple", "cherry"]
+
+for x in adj:
+    for y in fruits:
+        print(x, y)
+```
+
+**Useful Functions:**
+
+*   `enumerate()`: Returns index and value.
+    ```python
+    colors = ['red', 'green', 'blue']
+    for index, color in enumerate(colors):
+        print(f"{index}: {color}")
+    ```
+
+*   `zip()`: Iterate over multiple lists simultaneously.
+    ```python
+    names = ['Alice', 'Bob']
+    ages = [25, 30]
+    for name, age in zip(names, ages):
+        print(f"{name} is {age} years old")
+    ```
+
+### range() Function
+Generates a sequence of numbers.
+`range(start, stop, step)`
+
+```python
+for i in range(1, 6):
+    print(i) # Prints 1 to 5
+```
+
+### Loop Control Statements
+*   **break**: Terminates the loop.
+*   **continue**: Skips the current iteration.
+
+### Real-world Example: E-commerce Product Display
+
+![E-commerce Loop](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_ecommerce_loop_graphic_1769917982037.png)
+
+Iterating through a list of products to display them on a webpage.
+
+```python
+products = [
+    {'name': 'Laptop', 'price': 999},
+    {'name': 'Smartphone', 'price': 499},
+    {'name': 'Headphones', 'price': 199}
+]
+
+print("Available Products:")
+for product in products:
+    print(f"Product: {product['name']} | Price: ${product['price']}")
+    # In a real app, this would create HTML elements like:
+    # <div class='card'>...</div>
+```
+
+---
+
+## 12. Exercises
 
 ![Exercises](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_exercises_graphic_1769916922645.png)
 
@@ -570,7 +718,7 @@ else:
 
 ---
 
-## 11. Projects
+## 13. Projects
 
 ![Projects](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_projects_graphic_1769916943116.png)
 
@@ -705,6 +853,38 @@ else:
 
 print(f"Category: {category}")
 print(f"Advice: {advice}")
+```
+
+### Project 4: Number Guessing Game
+
+![Guessing Game](file:///C:/Users/vishn/.gemini/antigravity/brain/84345dc8-0323-44c2-9bf8-fe7d6fb264ed/python_guessing_game_graphic_1769918381075.png)
+
+**Description:** Guess a random number between 1 and 100. Keep guessing until you get it right!
+
+```python
+import random
+
+print("=" * 40)
+print("     NUMBER GUESSING GAME")
+print("=" * 40)
+
+secret_number = random.randint(1, 100)
+attempts = 0
+
+print("\nI have chosen a number between 1 and 100.")
+print("Can you guess it?\\n")
+
+while True:
+    guess = int(input(f"Attempt {attempts + 1}: Enter your guess: "))
+    attempts += 1
+
+    if guess == secret_number:
+        print(f"\\n🎉 Congratulations! You guessed the number in {attempts} attempts!")
+        break
+    elif guess < secret_number:
+        print("Too low! Try again.")
+    else:
+        print("Too high! Try again.")
 ```
 
 ---
