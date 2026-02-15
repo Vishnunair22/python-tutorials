@@ -14,6 +14,8 @@ A comprehensive guide covering fundamental Python concepts with examples and exe
 7. [Type Conversion](#type-conversion)
 8. [Literals](#literals)
 9. [Operators](#operators)
+10. [Control Flow - If/Else Statements](#control-flow---ifelse-statements)
+11. [Loops](#loops)
 
 ---
 
@@ -1020,6 +1022,727 @@ print("Without parentheses:", result2)  # Output: 11
 # Explanation:
 # result1: (10 + 5) = 15, then 15 * 2 = 30, 3 ** 2 = 9, 30 - 9 = 21
 # result2: 3 ** 2 = 9, 5 * 2 = 10, 10 + 10 = 20, 20 - 9 = 11
+```
+
+---
+
+## Control Flow - If/Else Statements
+
+Programs typically execute from top to bottom, line by line. However, we often need **branching** - the ability to execute different code based on conditions. This is where control flow statements come in.
+
+**Real-world example:** Consider a login system where users enter credentials. The program checks if they're valid - if yes, the user is authenticated; if no, access is denied.
+
+### Basic If Statement
+
+The `if` statement executes a block of code only when a condition is true.
+
+#### Syntax
+```python
+if condition:
+    statement1
+    statement2
+```
+
+#### Examples
+
+```python
+# Simple if statement
+age = 20
+if age >= 18:
+    print("You are an adult")
+
+# Multiple statements
+temperature = 35
+if temperature > 30:
+    print("It's hot outside!")
+    print("Stay hydrated")
+
+# Using comparison operators
+score = 85
+if score >= 80:
+    print("Excellent performance!")
+```
+
+### If-Else Statement
+
+The `else` clause executes when the `if` condition is false.
+
+#### Syntax
+```python
+if condition:
+    statement1
+else:
+    statement2
+```
+
+#### Examples
+
+```python
+# Basic if-else
+age = 15
+if age >= 18:
+    print("You can vote")
+else:
+    print("You cannot vote yet")
+
+# Login example
+user_email = input('Enter your email: ')
+user_password = input('Enter your password: ')
+
+if user_email == 'user@gmail.com' and user_password == '1234':
+    print('Welcome! Login successful.')
+else:
+    print('Sorry, incorrect username or password')
+
+# Number check
+number = int(input("Enter a number: "))
+if number % 2 == 0:
+    print(number, "is even")
+else:
+    print(number, "is odd")
+```
+
+### Elif Statement
+
+When you have multiple conditions to check, use `elif` (else if). Python checks conditions from top to bottom and executes the first true condition.
+
+#### Syntax
+```python
+if condition1:
+    statement1
+elif condition2:
+    statement2
+elif condition3:
+    statement3
+else:
+    statement4
+```
+
+#### Examples
+
+```python
+# Grade calculator
+marks = int(input("Enter your marks: "))
+
+if marks >= 90:
+    print("Grade: A+")
+elif marks >= 80:
+    print("Grade: A")
+elif marks >= 70:
+    print("Grade: B")
+elif marks >= 60:
+    print("Grade: C")
+elif marks >= 50:
+    print("Grade: D")
+else:
+    print("Grade: F - Failed")
+
+# Traffic light system
+signal = input("Enter signal color (red/yellow/green): ").lower()
+
+if signal == 'red':
+    print("STOP!")
+elif signal == 'yellow':
+    print("Get Ready")
+elif signal == 'green':
+    print("GO!")
+else:
+    print("Invalid signal color")
+
+# Age category
+age = 25
+if age < 13:
+    print("Child")
+elif age < 20:
+    print("Teenager")
+elif age < 60:
+    print("Adult")
+else:
+    print("Senior")
+```
+
+### Nested If Statements
+
+You can place `if` statements inside other `if` statements. This is called nesting.
+
+#### Examples
+
+```python
+# Nested if for login with role check
+username = "admin"
+password = "1234"
+role = "admin"
+
+if username == "admin" and password == "1234":
+    print("Login successful")
+    if role == "admin":
+        print("Welcome Admin! You have full access.")
+    else:
+        print("Welcome User! You have limited access.")
+else:
+    print("Invalid credentials")
+
+# Age and license check
+age = 20
+has_license = True
+
+if age >= 18:
+    print("You meet the age requirement")
+    if has_license:
+        print("You can drive!")
+    else:
+        print("You need to get a license first")
+else:
+    print("You are too young to drive")
+
+# Number classification
+num = int(input("Enter a number: "))
+
+if num > 0:
+    print("Positive number")
+    if num % 2 == 0:
+        print("Even positive number")
+    else:
+        print("Odd positive number")
+elif num < 0:
+    print("Negative number")
+    if num % 2 == 0:
+        print("Even negative number")
+    else:
+        print("Odd negative number")
+else:
+    print("Zero")
+```
+
+### Indentation in Python
+
+**IMPORTANT:** Python uses **indentation (spaces)** instead of curly braces `{}` to define code blocks. This makes code more readable.
+
+**Rules:**
+- Use 4 spaces for each indentation level (recommended)
+- Be consistent - don't mix tabs and spaces
+- All statements in a block must have the same indentation
+
+```python
+# Correct indentation
+if True:
+    print("This is indented")
+    print("This is also indented")
+print("This is not indented")
+
+# Incorrect - will cause IndentationError
+# if True:
+# print("Error - not indented")
+#   print("Error - inconsistent indentation")
+```
+
+### Ternary Operator (One-Line If-Else)
+
+Python supports a compact way to write simple if-else statements in one line.
+
+#### Syntax
+```python
+value_if_true if condition else value_if_false
+```
+
+#### Examples
+
+```python
+# Basic ternary
+age = 20
+status = "Adult" if age >= 18 else "Minor"
+print(status)  # Output: Adult
+
+# With variables
+a = 10
+b = 20
+max_value = a if a > b else b
+print("Maximum:", max_value)  # Output: Maximum: 20
+
+# Direct in print
+number = 7
+print("Even" if number % 2 == 0 else "Odd")  # Output: Odd
+```
+
+### Practice Exercises
+
+**Exercise 31:** Write a program to check if a number is positive, negative, or zero.
+```python
+# Solution:
+num = float(input("Enter a number: "))
+
+if num > 0:
+    print("Positive number")
+elif num < 0:
+    print("Negative number")
+else:
+    print("Zero")
+```
+
+**Exercise 32:** Create a simple calculator that performs addition, subtraction, multiplication, or division based on user choice.
+```python
+# Solution:
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+operation = input("Enter operation (+, -, *, /): ")
+
+if operation == '+':
+    result = num1 + num2
+    print("Result:", result)
+elif operation == '-':
+    result = num1 - num2
+    print("Result:", result)
+elif operation == '*':
+    result = num1 * num2
+    print("Result:", result)
+elif operation == '/':
+    if num2 != 0:
+        result = num1 / num2
+        print("Result:", result)
+    else:
+        print("Error: Cannot divide by zero")
+else:
+    print("Invalid operation")
+```
+
+**Exercise 33:** Write a program to determine if a person is eligible for a discount. Give 20% discount if age < 12 or age > 60, otherwise 10%.
+```python
+# Solution:
+age = int(input("Enter your age: "))
+total_price = float(input("Enter total price: "))
+
+if age < 12 or age > 60:
+    discount = total_price * 0.20
+    print("You get 20% discount!")
+else:
+    discount = total_price * 0.10
+    print("You get 10% discount!")
+
+final_price = total_price - discount
+print("Discount amount:", discount)
+print("Final price:", final_price)
+```
+
+**Exercise 34:** Write a program to check if a year is a leap year using nested if.
+```python
+# Solution:
+year = int(input("Enter a year: "))
+
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print(year, "is a leap year")
+        else:
+            print(year, "is not a leap year")
+    else:
+        print(year, "is a leap year")
+else:
+    print(year, "is not a leap year")
+```
+
+**Exercise 35:** Create a program that categorizes BMI (Body Mass Index). BMI < 18.5: Underweight, 18.5-24.9: Normal, 25-29.9: Overweight, >= 30: Obese.
+```python
+# Solution:
+weight = float(input("Enter weight in kg: "))
+height = float(input("Enter height in meters: "))
+
+bmi = weight / (height ** 2)
+print("Your BMI is:", round(bmi, 2))
+
+if bmi < 18.5:
+    print("Category: Underweight")
+elif bmi < 25:
+    print("Category: Normal weight")
+elif bmi < 30:
+    print("Category: Overweight")
+else:
+    print("Category: Obese")
+```
+
+---
+
+## Loops
+
+Loops are **iteration control statements** that repeat a block of code multiple times. They are essential when you need to perform repetitive tasks.
+
+**Real-world example:** On an e-commerce site like Flipkart, when you search for a product, many items appear. Instead of manually coding each product container, loops display different products using the same structure.
+
+### Types of Loops in Python
+1. **For Loop** - Iterates over a sequence
+2. **While Loop** - Repeats while a condition is true
+
+**Note:** Python does not have a traditional do-while loop, but we can achieve similar behavior.
+
+### For Loop
+
+The `for` loop iterates over a sequence (list, tuple, string, range, etc.) and executes code for each item.
+
+#### Syntax
+```python
+for variable in sequence:
+    statement1
+    statement2
+```
+
+#### Using range() Function
+
+The `range()` function generates a sequence of numbers.
+
+```python
+# range(stop) - from 0 to stop-1
+range(5)        # 0, 1, 2, 3, 4
+
+# range(start, stop) - from start to stop-1
+range(2, 8)     # 2, 3, 4, 5, 6, 7
+
+# range(start, stop, step) - with custom increment
+range(0, 10, 2) # 0, 2, 4, 6, 8
+range(10, 0, -1) # 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+```
+
+#### Examples
+
+```python
+# Basic for loop with range
+for i in range(5):
+    print(i)
+# Output: 0 1 2 3 4
+
+# Loop with start and stop
+for i in range(1, 6):
+    print("Number:", i)
+# Output: Number: 1, Number: 2, ..., Number: 5
+
+# Loop with step
+for i in range(0, 11, 2):
+    print(i)
+# Output: 0 2 4 6 8 10
+
+# Iterating over a list
+fruits = ['apple', 'banana', 'orange', 'mango']
+for fruit in fruits:
+    print("I like", fruit)
+
+# Iterating over a string
+for letter in "Python":
+    print(letter)
+# Output: P y t h o n (each on new line)
+
+# Iterating over a dictionary
+student = {'name': 'John', 'age': 20, 'grade': 'A'}
+for key in student:
+    print(key, ":", student[key])
+
+# Using items() for key-value pairs
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# Multiplication table
+num = 5
+for i in range(1, 11):
+    print(f"{num} x {i} = {num * i}")
+```
+
+#### Nested For Loops
+
+```python
+# Pattern printing
+for i in range(1, 5):
+    for j in range(i):
+        print("*", end=" ")
+    print()
+# Output:
+# * 
+# * * 
+# * * * 
+# * * * * 
+
+# Multiplication table (1-10)
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(f"{i*j:4}", end=" ")
+    print()
+```
+
+### While Loop
+
+The `while` loop repeats as long as a condition is true. Be careful to avoid infinite loops!
+
+#### Syntax
+```python
+while condition:
+    statement1
+    statement2
+    # Don't forget to update the condition!
+```
+
+#### Examples
+
+```python
+# Basic while loop
+count = 1
+while count <= 5:
+    print("Count:", count)
+    count += 1
+# Output: Count: 1, Count: 2, ..., Count: 5
+
+# Sum of numbers
+total = 0
+num = 1
+while num <= 10:
+    total += num
+    num += 1
+print("Sum:", total)  # Output: Sum: 55
+
+# User input validation
+password = ""
+while password != "secret":
+    password = input("Enter password: ")
+    if password != "secret":
+        print("Incorrect! Try again.")
+print("Access granted!")
+
+# Countdown
+n = 5
+while n > 0:
+    print(n)
+    n -= 1
+print("Blast off!")
+```
+
+#### Infinite Loops (Use with caution!)
+
+```python
+# Infinite loop - runs forever unless broken
+# while True:
+#     print("This runs forever!")
+
+# Practical use with break
+while True:
+    user_input = input("Enter 'quit' to exit: ")
+    if user_input == 'quit':
+        break
+    print("You entered:", user_input)
+```
+
+### Loop Control Statements
+
+#### 1. break - Exit the loop immediately
+
+```python
+# Break example
+for i in range(1, 11):
+    if i == 5:
+        break
+    print(i)
+# Output: 1 2 3 4 (stops at 5)
+
+# Finding first even number
+numbers = [1, 3, 5, 8, 9, 10]
+for num in numbers:
+    if num % 2 == 0:
+        print("First even number:", num)
+        break
+```
+
+#### 2. continue - Skip to the next iteration
+
+```python
+# Continue example
+for i in range(1, 6):
+    if i == 3:
+        continue
+    print(i)
+# Output: 1 2 4 5 (skips 3)
+
+# Print only odd numbers
+for i in range(1, 11):
+    if i % 2 == 0:
+        continue
+    print(i)
+# Output: 1 3 5 7 9
+```
+
+#### 3. pass - Do nothing (placeholder)
+
+```python
+# Pass example (useful during development)
+for i in range(5):
+    if i == 2:
+        pass  # TODO: Add logic later
+    else:
+        print(i)
+```
+
+#### 4. else with Loops
+
+Python allows an `else` clause with loops. It executes when the loop completes normally (not via break).
+
+```python
+# else with for loop
+for i in range(5):
+    print(i)
+else:
+    print("Loop completed successfully")
+
+# else doesn't execute with break
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+else:
+    print("This won't print")
+```
+
+### Do-While Loop Simulation
+
+Python doesn't have a built-in do-while loop, but we can simulate it:
+
+```python
+# Simulating do-while (executes at least once)
+while True:
+    number = int(input("Enter a positive number: "))
+    if number > 0:
+        print("Thank you!")
+        break
+    print("Please enter a positive number")
+```
+
+### Practice Exercises
+
+**Exercise 36:** Print all numbers from 1 to 100.
+```python
+# Solution:
+for i in range(1, 101):
+    print(i)
+```
+
+**Exercise 37:** Calculate the factorial of a number using a for loop.
+```python
+# Solution:
+num = int(input("Enter a number: "))
+factorial = 1
+
+for i in range(1, num + 1):
+    factorial *= i
+
+print(f"Factorial of {num} is {factorial}")
+```
+
+**Exercise 38:** Print the Fibonacci sequence up to n terms using a while loop.
+```python
+# Solution:
+n = int(input("How many terms? "))
+a, b = 0, 1
+count = 0
+
+while count < n:
+    print(a, end=" ")
+    a, b = b, a + b
+    count += 1
+print()
+```
+
+**Exercise 39:** Find the sum of all even numbers between 1 and 100.
+```python
+# Solution:
+total = 0
+for i in range(2, 101, 2):
+    total += i
+print("Sum of even numbers:", total)  # Output: 2550
+```
+
+**Exercise 40:** Create a number guessing game. Generate a random number and let the user guess until they get it right.
+```python
+# Solution:
+import random
+
+secret_number = random.randint(1, 100)
+attempts = 0
+
+while True:
+    guess = int(input("Guess the number (1-100): "))
+    attempts += 1
+    
+    if guess < secret_number:
+        print("Too low! Try again.")
+    elif guess > secret_number:
+        print("Too high! Try again.")
+    else:
+        print(f"Congratulations! You got it in {attempts} attempts!")
+        break
+```
+
+**Exercise 41:** Print a pyramid pattern using nested loops.
+```python
+# Solution:
+rows = 5
+for i in range(1, rows + 1):
+    # Print spaces
+    for j in range(rows - i):
+        print(" ", end="")
+    # Print stars
+    for k in range(2 * i - 1):
+        print("*", end="")
+    print()
+# Output:
+#     *
+#    ***
+#   *****
+#  *******
+# *********
+```
+
+**Exercise 42:** Create a program that prints all prime numbers between 1 and 50.
+```python
+# Solution:
+print("Prime numbers between 1 and 50:")
+for num in range(2, 51):
+    is_prime = True
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        print(num, end=" ")
+print()
+```
+
+**Exercise 43:** Reverse a number using a while loop.
+```python
+# Solution:
+num = int(input("Enter a number: "))
+reversed_num = 0
+
+while num > 0:
+    digit = num % 10
+    reversed_num = reversed_num * 10 + digit
+    num = num // 10
+
+print("Reversed number:", reversed_num)
+```
+
+**Exercise 44:** Print the multiplication table for numbers 1 to 10.
+```python
+# Solution:
+for i in range(1, 11):
+    print(f"\nMultiplication table for {i}:")
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i * j}")
+```
+
+**Exercise 45:** Count the number of digits in a number.
+```python
+# Solution:
+num = int(input("Enter a number: "))
+count = 0
+temp = num
+
+while temp > 0:
+    temp = temp // 10
+    count += 1
+
+print(f"Number of digits in {num}: {count}")
 ```
 
 ---
